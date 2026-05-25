@@ -353,21 +353,27 @@ Local setup:
         imgs_dir = Path(args.imgs)
 
     if ann_path is None or not ann_path.exists():
-        # Print everything under /kaggle/input to help diagnose
         kaggle_input = Path("/kaggle/input")
         if kaggle_input.exists():
             print("ERROR: Could not find wider_face_val_bbx_gt.txt under /kaggle/input/")
-            print("\nDataset contents found:")
-            for p in sorted(kaggle_input.rglob("*"))[:40]:
-                print(f"  {p}")
-            print("\nFix: pass the correct path explicitly:")
-            print("  python -m evaluation.wider_face_eval \\")
-            print("    --ann /kaggle/input/<dataset>/path/to/wider_face_val_bbx_gt.txt \\")
-            print("    --imgs /kaggle/input/<dataset>/path/to/WIDER_val/images")
+            print()
+            print("The WIDER FACE dataset is not attached to this notebook.")
+            print("Fix — in your Kaggle notebook:")
+            print("  1. Click 'Add Data' (right sidebar, looks like a + icon)")
+            print("  2. Search: wider face a face detection benchmark")
+            print("  3. Add:    mksaad/wider-face-a-face-detection-benchmark")
+            print("  4. Re-run this cell")
+            print()
+            print("Top-level dirs under /kaggle/input/ right now:")
+            try:
+                for p in sorted(kaggle_input.iterdir()):
+                    print(f"  {p.name}/")
+            except Exception:
+                pass
         else:
             print(f"ERROR: Annotation file not found: {ann_path or '(not provided)'}")
-            print("\nLocal setup: download WIDER FACE validation split from")
-            print("  http://shuoyang1213.me/WIDERFACE/ and pass --ann / --imgs")
+            print("Local: download WIDER FACE val split from http://shuoyang1213.me/WIDERFACE/")
+            print("       then pass --ann / --imgs pointing at the extracted files.")
         sys.exit(1)
 
     if imgs_dir is None or not imgs_dir.exists():
