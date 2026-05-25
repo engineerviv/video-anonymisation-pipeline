@@ -151,19 +151,19 @@ Detection runs every K=5 frames (configurable). Between detection frames, ByteTr
 | Stage | Detection frame | Non-detection frame |
 |---|---|---|
 | Frame decode | 2 ms | 2 ms |
-| Face detection (CUDA) | **21 ms** | — |
-| Text detection (CPU) | **147 ms** | — |
-| Logo detection (CUDA) | **16 ms** | — |
+| Face detection (CUDA) | **38 ms** | — |
+| Text detection (CPU) | **181 ms** | — |
+| Logo detection (CUDA) | **20 ms** | — |
 | ByteTrack update/predict | 2 ms | 1 ms |
 | Temporal smoothing | 1 ms | 1 ms |
 | Redaction | 3 ms | 3 ms |
 | FFmpeg pipe write | 2 ms | 2 ms |
-| **Total** | **194 ms** | **9 ms** |
-| **Amortized (K=5)** | **(183 ms det + 4×9 ms) / 5 = 37 ms** | |
-| **FPS ceiling** | **~27 FPS** | |
-| **Measured FPS** | **18.2 FPS** | |
+| **Total** | **247 ms** | **9 ms** |
+| **Amortized (K=5)** | **(247 ms det + 4×9 ms) / 5 = 56 ms** | |
+| **FPS ceiling** | **~18 FPS** | |
+| **Measured FPS** | **10.3 FPS** | |
 
-> **Text is the bottleneck on both CPU and GPU.** PaddleOCR always runs CPU-only — PaddlePaddle GPU support is limited. At 147 ms/detection-frame, text detection consumes 80% of the detection budget. Face (21 ms) and logo (16 ms) CUDA inference are fast but cannot compensate for the CPU-bound text detector.
+> **Text is the bottleneck on both CPU and GPU.** PaddleOCR always runs CPU-only — PaddlePaddle GPU support is limited. At 181 ms/detection-frame, text detection consumes 73% of the detection budget. Face (38 ms) and logo (20 ms) CUDA inference are fast but cannot compensate for the CPU-bound text detector.
 
 ### Apple M1 MPS — K=5 sparse (measured)
 
