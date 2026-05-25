@@ -88,6 +88,27 @@ class MultiTracker:
         new_active: dict[tuple[str, int], Track] = {}
 
         for class_name, class_dets in by_class.items():
+            if class_name == "logo":
+                # ByteTrack ignores detections with score < (track_activation_threshold + 0.1).
+                # YOLO-World with generic prompts scores logos at 0.05–0.13 — always below that
+                # hidden floor. Bypass ByteTrack: convert logo detections directly to tracks so
+                # any detection that passes our confidence threshold gets redacted immediately.
+                for det in class_dets:
+                    key = (class_name, id(det) % 100_000)
+                    if key not in self._birth_frames:
+                        self._birth_frames[key] = frame_idx
+                    age = frame_idx - self._birth_frames[key] + 1
+                    new_active[key] = Track(
+                        track_id=key[1],
+                        class_name=class_name,
+                        bbox=det.bbox,
+                        confidence=det.confidence,
+                        age=age,
+                        frames_since_update=0,
+                        is_confirmed=True,
+                    )
+                continue
+
             sv_dets = _detections_to_sv(class_dets)
             tracked = self._trackers[class_name].update_with_detections(sv_dets)
 
