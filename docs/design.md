@@ -94,6 +94,8 @@ These four constraints conflict. More detection = better recall but lower throug
 
 **Why not DeepSORT:** DeepSORT adds appearance embeddings (re-ID features) to the matching cost matrix. Better at maintaining identity across long occlusions. However: requires a separate embedding model per frame (adds ~10ms), and appearance features for text/logo tracks are meaningless. Overkill for MVP. Upgrade path if identity consistency bonus is attempted.
 
+**`track_min_hits = 1` — privacy-first confirmation policy:** ByteTrack's `minimum_consecutive_frames` parameter controls how many consecutive detection frames a track must appear in before it is "confirmed" and returned to the pipeline for redaction. The default in most tracking systems is 3, which reduces spurious tracks but introduces a redaction onset delay of `min_hits × K` frames. At K=5, `min_hits=3` means a face is visible for 15 frames (~0.5 seconds at 30fps) before it gets blurred. For a general-purpose tracker this is acceptable; for a privacy pipeline it is a failure — an unredacted face for half a second is exactly what the system exists to prevent. Setting `min_hits=1` redacts on first detection. The trade-off (occasional single-frame spurious blur on a high-confidence false positive) is trivially preferable to the alternative.
+
 ---
 
 ## 4. Data Flow and Interfaces
