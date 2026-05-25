@@ -35,7 +35,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt \
     && pip uninstall -y paddlepaddle onnxruntime \
-    && pip install --no-cache-dir paddlepaddle-gpu onnxruntime-gpu
+    && pip install --no-cache-dir "paddlepaddle-gpu>=2.6.0,<3.0.0" "onnxruntime-gpu>=1.17.0"
 
 # Copy project source
 COPY pipeline/ ./pipeline/

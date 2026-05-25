@@ -19,7 +19,7 @@ ffmpeg-python>=0.2.0
 # ultralytics: YOLOv8-face (face detection) + YOLO-World (logo detection)
 ultralytics>=8.1.0
 # paddlepaddle: CPU build — Kaggle/Docker swap to paddlepaddle-gpu via setup_kaggle.sh / Dockerfile
-paddlepaddle>=2.6.0
+paddlepaddle>=2.6.0,<3.0.0
 # paddleocr: DBNet text detection (detection-only mode, no recognition)
 paddleocr>=2.7.3,<3.0.0
 

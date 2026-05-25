@@ -22,7 +22,7 @@ dependencies:
       - av>=11.0.0
       - ffmpeg-python>=0.2.0
       - ultralytics>=8.1.0
-      - paddlepaddle>=2.6.0
+      - paddlepaddle>=2.6.0,<3.0.0
       - paddleocr>=2.7.3,<3.0.0
       - supervision>=0.21.0,<0.30.0
       - scikit-image>=0.22.0
