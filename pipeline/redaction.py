@@ -4,7 +4,10 @@ Redaction engine: apply anonymization to each tracked region.
 Per-class strategy:
   face  → Gaussian blur (σ=20, kernel=51) — defeats ArcFace re-ID at σ≥15
   text  → Luminance-matched solid fill — blends with surrounding scene tone
-  logo  → Gaussian blur (σ=15, kernel=41) — reads as "out of focus" on surfaces
+  logo  → Luminance-matched solid fill — completely removes visual information.
+           Blur was tried (σ=15) but geometric logos (BMW circle, Audi rings)
+           remain recognisable because shape structure survives blur even at
+           high σ. Solid fill removes all pixels unconditionally.
 
 All redactions use a feathered mask edge (default 3px) to avoid hard rectangular
 boundaries that degrade SSIM in surrounding pixels.
@@ -67,10 +70,8 @@ class Redactor:
                     self.config.mask_feather_px,
                 )
             elif track.class_name == "logo":
-                _blur_region(
+                _fill_region(
                     image, x1, y1, x2, y2,
-                    self.config.logo_blur_kernel,
-                    self.config.logo_blur_sigma,
                     self.config.mask_feather_px,
                 )
 

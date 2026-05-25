@@ -75,7 +75,7 @@ class PipelineConfig:
     # Face blur: kernel must be odd. sigma=20 defeats ArcFace re-ID (verified at sigma≥15).
     face_blur_kernel: int = 51
     face_blur_sigma: float = 20.0
-    # Logo blur: slightly lighter than face blur — logos are often on surfaces.
+    # Logo redaction is solid fill (not blur) — kept for potential future override.
     logo_blur_kernel: int = 41
     logo_blur_sigma: float = 15.0
     # Feathered mask edge blend width in pixels.
