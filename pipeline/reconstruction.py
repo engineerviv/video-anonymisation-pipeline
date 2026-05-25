@@ -47,6 +47,7 @@ class VideoReconstructor:
         self._proc: subprocess.Popen | None = None
         self._temp_video: Path | None = None
         self._output_path: Path | None = None
+        self._frames_written: int = 0
 
     def open(self, output_path: str | Path) -> None:
         """
@@ -106,6 +107,7 @@ class VideoReconstructor:
             )
 
         self._proc.stdin.write(frame.tobytes())
+        self._frames_written += 1
 
     def close(self) -> Path:
         """
@@ -122,6 +124,16 @@ class VideoReconstructor:
         if returncode != 0:
             stderr = self._proc.stderr.read().decode(errors="replace")
             raise RuntimeError(f"FFmpeg encode failed (exit {returncode}):\n{stderr}")
+
+        if self._frames_written == 0:
+            raise RuntimeError(
+                "No frames were decoded from the source video. "
+                "This usually means an unsupported codec — AV1 (av01) is common on "
+                "YouTube 4K and requires software decode support that may not be "
+                "present on all platforms. The format selector should have excluded "
+                "AV1; if you see this error, check that ingestion.py's format string "
+                "is filtering vcodec!^=av01 correctly."
+            )
 
         # Pass 2: mux audio if source has an audio stream
         if self.meta.has_audio:

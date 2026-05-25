@@ -70,7 +70,14 @@ def _download(url: str, config: PipelineConfig) -> str:
             print(f"\r  Downloading... {pct} at {speed}    ", end="", flush=True)
 
     ydl_opts: dict = {
-        "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+        # Prefer H.264 MP4 — AV1 (av01) is excluded because OpenCV on Linux/Kaggle
+        # does not have reliable software AV1 decode support. AV1 is the default
+        # "best" format on YouTube 4K, so we must explicitly exclude it.
+        "format": (
+            "bestvideo[ext=mp4][vcodec!^=av01]+bestaudio[ext=m4a]"
+            "/bestvideo[vcodec!^=av01]+bestaudio"
+            "/best[ext=mp4]/best"
+        ),
         "outtmpl": output_template,
         "noplaylist": True,       # never pull full playlists, only the given video
         "quiet": True,
