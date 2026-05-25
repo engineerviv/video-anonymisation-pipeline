@@ -217,10 +217,26 @@ A single-frame gap in redaction (frame N has no box while N-1 and N+1 do) is a p
 | Abstract logos without text context | YOLO-World semantic query fails on non-textual shapes | Accept as known limitation; document in model card |
 | Heavy H.264 compression | Reduces edge contrast, hurts text/logo detection | Not mitigated — accept performance degradation on heavily compressed video |
 | VFR (variable frame rate) video | Scene cut threshold and K-frame counting may be wrong | Normalize to CFR in extractor |
+| Long videos (>3 min) — FFmpeg stderr pipe deadlock | Pipeline freezes mid-video; progress bar stops | Background thread drains FFmpeg stderr continuously — see reconstruction.py |
 
 ---
 
-## 9. Dependency Version Constraints
+## 9. FFmpeg Stderr Pipe Deadlock — Engineering Note
+
+When using `subprocess.Popen` with `stderr=subprocess.PIPE`, the child process's stderr output accumulates in an OS-level pipe buffer (64KB on Linux). If the buffer fills and nobody is reading it, the child process blocks on its next stderr write. For FFmpeg encoding raw video frames:
+
+- FFmpeg writes a progress line (~80 bytes) to stderr roughly every 0.5 seconds
+- For a 4-minute video processed at 11 FPS: ~600 seconds × 2 lines/s = ~1,200 lines × 80 bytes ≈ 96KB
+- 96KB exceeds the 64KB pipe buffer at approximately 61% completion
+- FFmpeg blocks on stderr write → stops reading stdin → our `write_frame()` call blocks → deadlock
+
+**Mitigation:** `VideoReconstructor.open()` starts a daemon thread (`_drain_stderr`) that continuously reads lines from `self._proc.stderr` into a list. The list is used for error reporting in `close()`. The pipe buffer stays empty throughout encoding. This pattern is required whenever a subprocess produces continuous output to a piped stderr.
+
+Python's `subprocess` documentation explicitly warns about this: "Use `communicate()` rather than `.stdin.write`, `.stdout.read` or `.stderr.read` to avoid deadlocks." We cannot use `communicate()` here because we are streaming frames incrementally — `communicate()` requires all input upfront. The background drain thread is the correct solution for streaming use cases.
+
+---
+
+## 10. Dependency Version Constraints
 
 Two hard version pins exist that future maintainers must not remove without testing:
 
