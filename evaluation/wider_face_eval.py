@@ -274,11 +274,44 @@ def _print_results(r: dict) -> None:
     print("=" * 60)
 
 
-def main() -> None:
-    # Default paths match standard Kaggle dataset structure
-    default_ann = "/kaggle/input/wider-face/wider_face_split/wider_face_val_bbx_gt.txt"
-    default_imgs = "/kaggle/input/wider-face/WIDER_val/images"
+def _find_wider_face_paths() -> tuple[Path | None, Path | None]:
+    """
+    Auto-discover WIDER FACE annotation file and images directory under
+    /kaggle/input/. Kaggle dataset slugs vary (wider-face, widerface, etc.)
+    so we search by filename rather than assuming a fixed path.
+    """
+    kaggle_input = Path("/kaggle/input")
+    if not kaggle_input.exists():
+        return None, None
 
+    # Find annotation file anywhere under /kaggle/input
+    ann = None
+    for candidate in kaggle_input.rglob("wider_face_val_bbx_gt.txt"):
+        ann = candidate
+        break
+
+    # Find images directory: look for WIDER_val/images or any dir named 'images'
+    # that sits next to a wider_face_split dir
+    imgs = None
+    if ann is not None:
+        # Annotation is in wider_face_split/; images should be a sibling directory
+        split_dir = ann.parent.parent  # up from wider_face_split/
+        for candidate in ["WIDER_val/images", "wider_val/images", "val/images", "images"]:
+            p = split_dir / candidate
+            if p.exists():
+                imgs = p
+                break
+
+    if imgs is None:
+        # Broader search: any 'images' directory that contains subdirs (categories)
+        for candidate in kaggle_input.rglob("WIDER_val/images"):
+            imgs = candidate
+            break
+
+    return ann, imgs
+
+
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="WIDER FACE face detector evaluation",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -292,10 +325,10 @@ Local setup:
   Point --ann and --imgs at the extracted files.
 """,
     )
-    parser.add_argument("--ann", default=default_ann, metavar="PATH",
-        help=f"Path to wider_face_val_bbx_gt.txt (default: {default_ann})")
-    parser.add_argument("--imgs", default=default_imgs, metavar="PATH",
-        help=f"Path to WIDER_val/images/ directory (default: {default_imgs})")
+    parser.add_argument("--ann", default=None, metavar="PATH",
+        help="Path to wider_face_val_bbx_gt.txt (auto-discovered on Kaggle if omitted)")
+    parser.add_argument("--imgs", default=None, metavar="PATH",
+        help="Path to WIDER_val/images/ directory (auto-discovered on Kaggle if omitted)")
     parser.add_argument("--max", type=int, default=500, metavar="N",
         help="Evaluate first N images (default: 500). Use --full for all.")
     parser.add_argument("--full", action="store_true",
@@ -310,21 +343,40 @@ Local setup:
         help="Save JSON results here (default: outputs/wider_face_results.json)")
     args = parser.parse_args()
 
-    ann_path = Path(args.ann)
-    imgs_dir = Path(args.imgs)
+    # Resolve annotation and images paths
+    if args.ann is None or args.imgs is None:
+        auto_ann, auto_imgs = _find_wider_face_paths()
+        ann_path  = Path(args.ann)  if args.ann  else auto_ann
+        imgs_dir  = Path(args.imgs) if args.imgs else auto_imgs
+    else:
+        ann_path = Path(args.ann)
+        imgs_dir = Path(args.imgs)
 
-    if not ann_path.exists():
-        print(f"ERROR: Annotation file not found: {ann_path}")
-        print("\nTo run on Kaggle:")
-        print("  1. Add dataset: notebook > 'Add Data' > search 'wider face' > lukyanov/wider-face")
-        print("  2. Run: python -m evaluation.wider_face_eval")
-        print("\nTo run locally: download WIDER FACE validation split from")
-        print("  http://shuoyang1213.me/WIDERFACE/ and point --ann / --imgs at the files.")
+    if ann_path is None or not ann_path.exists():
+        # Print everything under /kaggle/input to help diagnose
+        kaggle_input = Path("/kaggle/input")
+        if kaggle_input.exists():
+            print("ERROR: Could not find wider_face_val_bbx_gt.txt under /kaggle/input/")
+            print("\nDataset contents found:")
+            for p in sorted(kaggle_input.rglob("*"))[:40]:
+                print(f"  {p}")
+            print("\nFix: pass the correct path explicitly:")
+            print("  python -m evaluation.wider_face_eval \\")
+            print("    --ann /kaggle/input/<dataset>/path/to/wider_face_val_bbx_gt.txt \\")
+            print("    --imgs /kaggle/input/<dataset>/path/to/WIDER_val/images")
+        else:
+            print(f"ERROR: Annotation file not found: {ann_path or '(not provided)'}")
+            print("\nLocal setup: download WIDER FACE validation split from")
+            print("  http://shuoyang1213.me/WIDERFACE/ and pass --ann / --imgs")
         sys.exit(1)
 
-    if not imgs_dir.exists():
+    if imgs_dir is None or not imgs_dir.exists():
         print(f"ERROR: Images directory not found: {imgs_dir}")
+        print("Pass --imgs pointing at the WIDER_val/images directory.")
         sys.exit(1)
+
+    print(f"  Annotations : {ann_path}")
+    print(f"  Images      : {imgs_dir}")
 
     max_images = None if args.full else args.max
 
