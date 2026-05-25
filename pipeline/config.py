@@ -55,8 +55,11 @@ class PipelineConfig:
     # ── Tracking ──────────────────────────────────────────────────────────────
     # Delete a track if it hasn't been matched in this many frames.
     track_max_age: int = 30
-    # Only confirm a track after it's been matched this many times (reduces spurious tracks).
-    track_min_hits: int = 3
+    # Confirm a track after this many consecutive detection matches.
+    # Set to 1 for a privacy pipeline — redact on first detection.
+    # Higher values reduce spurious tracks but delay redaction by (min_hits × K) frames,
+    # which is unacceptable for faces (e.g. min_hits=3, K=5 → 15 frames unredacted).
+    track_min_hits: int = 1
 
     # ── Temporal Smoothing ────────────────────────────────────────────────────
     # EMA alpha for bbox coordinate smoothing. Higher = more responsive, less smooth.
