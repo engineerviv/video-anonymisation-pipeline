@@ -48,9 +48,11 @@ class PipelineConfig:
     face_confidence: float = 0.45
     # Text: 0.5 — DBNet is generally well-calibrated; lower if missing watermarks.
     text_confidence: float = 0.50
-    # Logo: 0.3 — intentionally low to maximize recall; accept more false positives.
-    # The assignment weights logo recall (≥90%) above FPR (≤5%).
-    logo_confidence: float = 0.30
+    # Logo: 0.05 — YOLO-World scores logos very low with generic text prompts
+    # (diagnostic showed conf≈0.04 on a visible broadcast logo at conf=0.01 floor).
+    # Must be below 0.05 to catch real detections; 0.30 filters everything out.
+    # Accept higher FPR in exchange for recall — privacy pipeline favours over-detection.
+    logo_confidence: float = 0.05
 
     # ── Tracking ──────────────────────────────────────────────────────────────
     # Delete a track if it hasn't been matched in this many frames.
