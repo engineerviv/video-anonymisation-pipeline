@@ -145,23 +145,24 @@ All redaction types apply a 3px soft feather at the bbox boundary. The transitio
 
 ## 6. Throughput Analysis
 
-### Per-frame latency budget (T4 GPU, K=5 sparse):
+### Per-frame latency budget (T4 GPU, K=5 sparse — measured on Kaggle T4):
 
 | Stage | Detection frame | Non-detection frame |
 |---|---|---|
 | Frame decode | 2ms | 2ms |
-| Face detection | 3ms | 0ms |
-| Text detection | 8ms | 0ms |
-| Logo detection | 15ms | 0ms |
+| Face detection (CUDA) | **21ms** | 0ms |
+| Text detection (CPU) | **147ms** | 0ms |
+| Logo detection (CUDA) | **16ms** | 0ms |
 | Tracking update/predict | 2ms | 1ms |
 | Temporal smoothing | 1ms | 1ms |
 | Redaction | 3ms | 3ms |
 | Frame encode (pipe) | 2ms | 2ms |
-| **Total** | **36ms** | **9ms** |
-| **Amortized (K=5)** | **(36 + 4×9) / 5 = 14.4ms** | |
-| **Effective FPS** | **~69 FPS** | |
+| **Total** | **194ms** | **9ms** |
+| **Amortized (K=5)** | **(183ms + 4×9ms) / 5 = 37ms** | |
+| **FPS ceiling** | **~27 FPS** | |
+| **Measured FPS** | **18.2 FPS** | |
 
-In practice: Python overhead, memory allocation, and GIL contention reduce this by ~50%. Realistic: **30–40 FPS on T4**, **12–20 FPS on M1 MPS**.
+Measured on Kaggle T4 processing a 1080p video (5831 frames, K=5). Python/GIL overhead accounts for the gap between 27 FPS ceiling and 18.2 FPS actual. Text detection is the bottleneck at 147ms/frame — PaddleOCR runs CPU-only even on GPU hosts.
 
 ### Per-frame latency budget (M1 MPS, K=5 sparse — measured):
 

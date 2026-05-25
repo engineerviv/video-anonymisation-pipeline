@@ -136,7 +136,7 @@ Track             track_id, class_name, bbox, confidence,
 
 Detection runs every K=5 frames (configurable). Between detection frames, ByteTrack's Kalman filter predicts each track's next position. This achieves two goals simultaneously:
 
-**Throughput** — at K=5, three detectors run at 6 Hz instead of 30 Hz. Amortized detection cost on T4: ~7ms/frame. On M1 MPS: ~22ms/frame.
+**Throughput** — at K=5, three detectors run at 6 Hz instead of 30 Hz. Amortized detection cost on T4: ~37ms/frame (dominated by PaddleOCR CPU). On M1 MPS: ~90ms/frame.
 
 **Temporal consistency** — the Kalman filter always produces a prediction; it has no "confidence" that drops below threshold. A 96% per-frame recall detector produces approximately 76% track-level consistency on average (any single missed detection breaks that frame's contribution). The Kalman propagation eliminates single-frame gaps entirely, achieving ≥99% track-level consistency.
 
@@ -146,39 +146,41 @@ Detection runs every K=5 frames (configurable). Between detection frames, ByteTr
 
 ## Per-Stage Latency
 
-### T4 GPU — K=5 sparse
+### T4 GPU — K=5 sparse (measured on Kaggle T4, 1080p video)
 
 | Stage | Detection frame | Non-detection frame |
 |---|---|---|
 | Frame decode | 2 ms | 2 ms |
-| Face detection (CUDA) | 3 ms | — |
-| Text detection (CPU) | 8 ms | — |
-| Logo detection (CUDA) | 15 ms | — |
+| Face detection (CUDA) | **21 ms** | — |
+| Text detection (CPU) | **147 ms** | — |
+| Logo detection (CUDA) | **16 ms** | — |
 | ByteTrack update/predict | 2 ms | 1 ms |
 | Temporal smoothing | 1 ms | 1 ms |
 | Redaction | 3 ms | 3 ms |
 | FFmpeg pipe write | 2 ms | 2 ms |
-| **Total** | **36 ms** | **9 ms** |
-| **Amortized (K=5)** | **(36 + 4×9) / 5 = 14.4 ms** | |
-| **Theoretical FPS** | **69 FPS** | |
-| **Realistic FPS (−50% overhead)** | **30–40 FPS** | |
+| **Total** | **194 ms** | **9 ms** |
+| **Amortized (K=5)** | **(183 ms det + 4×9 ms) / 5 = 37 ms** | |
+| **FPS ceiling** | **~27 FPS** | |
+| **Measured FPS** | **18.2 FPS** | |
 
-### Apple M1 MPS — K=8 sparse (recommended dev setting)
+> **Text is the bottleneck on both CPU and GPU.** PaddleOCR always runs CPU-only — PaddlePaddle GPU support is limited. At 147 ms/detection-frame, text detection consumes 80% of the detection budget. Face (21 ms) and logo (16 ms) CUDA inference are fast but cannot compensate for the CPU-bound text detector.
+
+### Apple M1 MPS — K=5 sparse (measured)
 
 | Stage | Detection frame | Non-detection frame |
 |---|---|---|
 | Frame decode | 3 ms | 3 ms |
-| Face detection (MPS) | 12 ms | — |
-| Text detection (CPU) | 35 ms | — |
-| Logo detection (MPS) | 55 ms | — |
+| Face detection (MPS) | **82 ms** | — |
+| Text detection (CPU) | **289 ms** | — |
+| Logo detection (MPS) | **37 ms** | — |
 | Track + smooth + redact | 5 ms | 5 ms |
 | FFmpeg pipe write (VideoToolbox) | 1 ms | 1 ms |
-| **Total** | **111 ms** | **9 ms** |
-| **Amortized (K=8)** | **(111 + 7×9) / 8 = 21.8 ms** | |
-| **Theoretical FPS** | **46 FPS** | |
-| **Realistic FPS (−50% overhead)** | **15–25 FPS** | |
+| **Total** | **417 ms** | **9 ms** |
+| **Amortized (K=5)** | **(417 + 4×9) / 5 = 90 ms** | |
+| **FPS ceiling** | **~11 FPS** | |
+| **Measured FPS** | **6–17 FPS (resolution-dependent)** | |
 
-Overhead sources: Python GIL contention between threads, NumPy memory allocation, OpenCV BGR↔RGB conversion at device boundaries, tqdm progress bar refresh.
+Overhead sources: Python GIL contention, NumPy memory allocation, OpenCV BGR↔RGB conversion at device boundaries, tqdm refresh. Measured FPS is 30–40% below the amortized ceiling due to these factors.
 
 ---
 
