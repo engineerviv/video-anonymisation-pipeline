@@ -133,11 +133,13 @@ Parameters: kernel=(51,51), sigma=20.0
 
 Implementation: convert border region to YCrCb colorspace, sample mean Y (luminance) channel, fill BGR with equivalent grey value.
 
-### Logo: Gaussian Blur
+### Logo: Luminance-Matched Solid Fill
 
-Parameters: kernel=(41,41), sigma=15.0
+Same method as text redaction — sample the mean luminance of the 5px border surrounding the bbox, fill the region with a neutral grey at that brightness.
 
-Logos often appear on product surfaces (clothing, backgrounds) where a solid fill would look obviously artificial. Blur reads as "out of focus" and is less intrusive.
+**Why solid fill rather than blur:** Gaussian blur at any σ preserves geometric structure. Abstract graphic logos (BMW roundel, Audi four-rings, Nike swoosh) survive heavy blur because their defining feature is shape, not fine detail — a blurred circle is still obviously a circle. Solid fill removes all pixels unconditionally; there is no residual structure to recognise.
+
+**Why luminance-matched:** A mid-grey or black fill on a bright background reads as an obvious censor bar and draws attention. Matching the surrounding luminance produces a flat patch that reads as a blank product surface rather than a redaction artifact.
 
 ### Feathered Mask Edges
 

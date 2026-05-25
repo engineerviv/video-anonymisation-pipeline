@@ -71,7 +71,7 @@ The pipeline ingests any publicly accessible video URL, detects faces, brand tex
  │  Redaction Engine  (pipeline/redaction.py)   │
  │  face  → Gaussian blur  σ=20  kernel=51      │
  │  text  → luminance-matched solid fill        │
- │  logo  → Gaussian blur  σ=15  kernel=41      │
+ │  logo  → luminance-matched solid fill        │
  │  All   → feathered mask edges  3 px          │
  └────────────────────┬────────────────────────┘
                       │  redacted frame  (BGR, in-place)
@@ -204,6 +204,6 @@ PaddleOCR (text) always runs on CPU — PaddlePaddle MPS support is experimental
 |---|---|---|---|---|
 | Face | Gaussian blur | 51×51 | 20.0 | ArcFace cosine similarity < 0.4 after redaction |
 | Text | Luminance-matched fill | — | — | Background-tone neutral fill (no tint) |
-| Logo | Gaussian blur | 41×41 | 15.0 | Reads as "out of focus" on product surfaces |
+| Logo | Luminance-matched fill | — | — | Solid fill removes geometric structure that blur preserves |
 
 All regions: 3 px feathered mask edge (Gaussian-weighted blend at boundary). Box expansion: 15% scale-aware margin on all face bboxes before redaction (covers hair, ears, forehead).
