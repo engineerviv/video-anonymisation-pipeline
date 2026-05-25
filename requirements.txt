@@ -1,0 +1,41 @@
+# ── Core ML ──────────────────────────────────────────────────────────────────
+torch>=2.1.0
+torchvision>=0.16.0
+numpy>=1.24.0,<2.0.0
+
+# ── Computer Vision ───────────────────────────────────────────────────────────
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# ── Video I/O ─────────────────────────────────────────────────────────────────
+# yt-dlp: download any public video URL (YouTube, direct MP4, etc.)
+yt-dlp>=2024.1.0
+# av: PyAV bindings for FFmpeg — faster frame decode than cv2.VideoCapture
+av>=11.0.0
+# ffmpeg-python: FFmpeg subprocess wrapper for video reconstruction
+ffmpeg-python>=0.2.0
+
+# ── Detection Models ──────────────────────────────────────────────────────────
+# ultralytics: YOLOv8-face (face detection) + YOLO-World (logo detection)
+ultralytics>=8.1.0
+# paddlepaddle: CPU build — Kaggle/Docker swap to paddlepaddle-gpu via setup_kaggle.sh / Dockerfile
+paddlepaddle>=2.6.0
+# paddleocr: DBNet text detection (detection-only mode, no recognition)
+paddleocr>=2.7.3,<3.0.0
+
+# ── Tracking ─────────────────────────────────────────────────────────────────
+# supervision: ByteTrack implementation + detection utilities
+# Pinned <0.30: ByteTrack deprecated in 0.28, removed in 0.30 — update when migrated
+supervision>=0.21.0,<0.30.0
+
+# ── Evaluation ───────────────────────────────────────────────────────────────
+# scikit-image: SSIM computation
+scikit-image>=0.22.0
+# insightface: ArcFace embeddings for re-ID resistance evaluation
+insightface>=0.7.3
+# onnxruntime: required by insightface
+onnxruntime>=1.17.0
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+tqdm>=4.66.0
+click>=8.1.0

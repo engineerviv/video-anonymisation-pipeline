@@ -1,0 +1,50 @@
+# Model weights — large binaries, downloaded at runtime
+models/
+*.pt
+*.onnx
+*.tflite
+
+# Generated outputs — videos, eval results, reports
+outputs/
+.tmp/
+
+# Videos — large media files, not versioned
+data/test_videos/
+videos/
+
+# Dev artifacts
+tasklist.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Kaggle credentials
+kaggle.json
+
+# Assignment PDF
+video_anonymisation_assignment.pdf

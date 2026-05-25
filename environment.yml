@@ -1,0 +1,32 @@
+name: video-anon
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - pip>=23.0
+
+  # ffmpeg as a system package — ensures codec support (h264, h265, aac)
+  # on macOS this also enables VideoToolbox hardware acceleration
+  - ffmpeg>=6.0
+
+  - pip:
+      - torch>=2.1.0
+      - torchvision>=0.16.0
+      - numpy>=1.24.0,<2.0.0
+      - opencv-python>=4.8.0
+      - Pillow>=10.0.0
+      - yt-dlp>=2024.1.0
+      - av>=11.0.0
+      - ffmpeg-python>=0.2.0
+      - ultralytics>=8.1.0
+      - paddlepaddle>=2.6.0
+      - paddleocr>=2.7.3,<3.0.0
+      - supervision>=0.21.0,<0.30.0
+      - scikit-image>=0.22.0
+      - insightface>=0.7.3
+      - onnxruntime>=1.17.0
+      - tqdm>=4.66.0
+      - click>=8.1.0

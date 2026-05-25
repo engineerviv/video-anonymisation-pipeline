@@ -1,0 +1,37 @@
+{
+  "annotations": [
+    {
+      "frame_idx": 31,
+      "bbox": [
+        54,
+        464,
+        70,
+        484
+      ],
+      "class": "face",
+      "track_id": null
+    },
+    {
+      "frame_idx": 222,
+      "bbox": [
+        912,
+        351,
+        918,
+        359
+      ],
+      "class": "face",
+      "track_id": null
+    },
+    {
+      "frame_idx": 222,
+      "bbox": [
+        953,
+        346,
+        959,
+        353
+      ],
+      "class": "face",
+      "track_id": null
+    }
+  ]
+}

@@ -1,0 +1,2644 @@
+{
+  "annotations": [
+    {
+      "frame_idx": 0,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 0,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 0,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 0,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 1,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 1,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 1,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 1,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 2,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 2,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 2,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 2,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 3,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 3,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 3,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 3,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 4,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 4,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 4,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 4,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 5,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 5,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 5,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 5,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 6,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 6,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 6,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 6,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 7,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 7,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 7,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 7,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 8,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 8,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 8,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 8,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 9,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 9,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 9,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 9,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 10,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 10,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 10,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 10,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 11,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 11,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 11,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 11,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 12,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 12,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 12,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 12,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 13,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 13,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 13,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 13,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 14,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 14,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 14,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 14,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 15,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 15,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 15,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 15,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 16,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 16,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 16,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 16,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 17,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 17,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 17,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 17,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 18,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 18,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 18,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 18,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 19,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 19,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 19,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 19,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 20,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 20,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 20,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 20,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 21,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 21,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 21,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 21,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 22,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 22,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 22,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 22,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 23,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 23,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 23,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 23,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 24,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 24,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 24,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 24,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 25,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 25,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 25,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 25,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 26,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 26,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 26,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 26,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 27,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 27,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 27,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 27,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 28,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 28,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 28,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 28,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 29,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 29,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 29,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 29,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 30,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 30,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 30,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 30,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 31,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 31,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 31,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 31,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 32,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 32,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 32,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 32,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 33,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 33,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 33,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 33,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 34,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 34,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 34,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 34,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 35,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 35,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 35,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 35,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 36,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 36,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 36,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 36,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 37,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 37,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 37,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 37,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 38,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 38,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 38,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 38,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 39,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 39,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 39,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 39,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 40,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 40,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 40,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 40,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 41,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 41,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 41,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 41,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 42,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 42,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 42,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 42,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 43,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 43,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 43,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 43,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 44,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 44,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 44,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 44,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 45,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 45,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 45,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 45,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 46,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 46,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 46,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 46,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 47,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 47,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 47,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 47,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 48,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 48,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 48,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 48,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 49,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 49,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 49,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 49,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 50,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 50,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 50,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 50,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 51,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 51,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 51,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 51,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 52,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 52,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 52,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 52,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 53,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 53,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 53,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 53,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 54,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 54,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 54,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 54,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 55,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 55,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 55,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 55,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 56,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 56,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 56,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 56,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 57,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 57,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 57,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 57,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 58,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 58,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 58,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 58,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    },
+    {
+      "frame_idx": 59,
+      "bbox": [
+        210,
+        240,
+        390,
+        460
+      ],
+      "class": "face",
+      "track_id": 1
+    },
+    {
+      "frame_idx": 59,
+      "bbox": [
+        895,
+        185,
+        1005,
+        315
+      ],
+      "class": "face",
+      "track_id": 2
+    },
+    {
+      "frame_idx": 59,
+      "bbox": [
+        30,
+        580,
+        1250,
+        630
+      ],
+      "class": "text",
+      "track_id": 10
+    },
+    {
+      "frame_idx": 59,
+      "bbox": [
+        1085,
+        12,
+        1265,
+        72
+      ],
+      "class": "logo",
+      "track_id": 20
+    }
+  ]
+}
