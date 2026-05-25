@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import shutil
 import subprocess
+import threading
 from pathlib import Path
 
 import numpy as np
@@ -48,6 +49,8 @@ class VideoReconstructor:
         self._temp_video: Path | None = None
         self._output_path: Path | None = None
         self._frames_written: int = 0
+        self._stderr_lines: list[bytes] = []
+        self._stderr_thread: threading.Thread | None = None
 
     def open(self, output_path: str | Path) -> None:
         """
@@ -91,6 +94,18 @@ class VideoReconstructor:
             stderr=subprocess.PIPE,
         )
 
+        # Drain FFmpeg stderr continuously in a background thread.
+        # FFmpeg writes progress lines (~80 bytes each) to stderr every ~0.5s.
+        # On long videos these accumulate beyond the OS pipe buffer (64KB on Linux),
+        # causing FFmpeg to block on its stderr write, which stops it reading stdin,
+        # which blocks our write_frame() call — a classic pipe deadlock.
+        # Reading stderr in a thread keeps the buffer empty and prevents the deadlock.
+        self._stderr_lines = []
+        self._stderr_thread = threading.Thread(
+            target=self._drain_stderr, daemon=True
+        )
+        self._stderr_thread.start()
+
     def write_frame(self, frame: np.ndarray) -> None:
         """
         Write one BGR frame to the encoder pipe.
@@ -101,7 +116,7 @@ class VideoReconstructor:
             raise RuntimeError("Call open() before write_frame()")
 
         if self._proc.poll() is not None:
-            stderr = self._proc.stderr.read().decode(errors="replace")
+            stderr = b"".join(self._stderr_lines).decode(errors="replace")
             raise RuntimeError(
                 f"FFmpeg encoder died unexpectedly (exit {self._proc.returncode}).\n{stderr}"
             )
@@ -121,8 +136,11 @@ class VideoReconstructor:
         self._proc.stdin.close()
         returncode = self._proc.wait()
 
+        if self._stderr_thread is not None:
+            self._stderr_thread.join(timeout=5)
+
         if returncode != 0:
-            stderr = self._proc.stderr.read().decode(errors="replace")
+            stderr = b"".join(self._stderr_lines).decode(errors="replace")
             raise RuntimeError(f"FFmpeg encode failed (exit {returncode}):\n{stderr}")
 
         if self._frames_written == 0:
@@ -150,6 +168,14 @@ class VideoReconstructor:
 
         print(f"  Output: {self._output_path}")
         return self._output_path
+
+    def _drain_stderr(self) -> None:
+        """Read FFmpeg stderr continuously so the OS pipe buffer never fills up."""
+        try:
+            for line in self._proc.stderr:
+                self._stderr_lines.append(line)
+        except Exception:
+            pass
 
 
 def build_output_path(meta: VideoMetadata, config: PipelineConfig) -> Path:
