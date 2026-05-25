@@ -24,6 +24,7 @@ Requires paddleocr<3.0.0 — the 3.x API removed use_gpu and ocr(rec=False).
 
 from __future__ import annotations
 
+import concurrent.futures
 import numpy as np
 
 from pipeline.config import PipelineConfig
@@ -74,7 +75,13 @@ class TextDetector(BaseDetector):
         try:
             # rec=False: detection only, no character recognition
             # cls=False: skip angle classification
-            result = self._ocr.ocr(rgb, rec=False, cls=False)
+            # 8-second timeout guards against PaddleOCR hanging on specific
+            # frame patterns — a known issue on CPU inference for long videos.
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as ex:
+                future = ex.submit(self._ocr.ocr, rgb, rec=False, cls=False)
+                result = future.result(timeout=8)
+        except concurrent.futures.TimeoutError:
+            return []  # skip frame if OCR hangs
         except Exception:
             return []  # graceful degradation on OCR errors
 

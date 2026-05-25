@@ -9,6 +9,7 @@ Usage:
 
 from __future__ import annotations
 
+import gc
 import time
 from pathlib import Path
 
@@ -201,6 +202,15 @@ def _run_pipeline(
                 reconstructor.write_frame(frame.image)
 
                 frames_processed += 1
+
+                # Periodic GPU cache + Python GC — prevents memory accumulation
+                # on long videos (thousands of frames build up unreleased tensors).
+                if frames_processed % 500 == 0:
+                    gc.collect()
+                    if torch.cuda.is_available():
+                        torch.cuda.empty_cache()
+                    elif torch.backends.mps.is_available():
+                        torch.mps.empty_cache()
 
                 # Update progress bar
                 face_n = sum(1 for t in frame.active_tracks if t.class_name == "face")
