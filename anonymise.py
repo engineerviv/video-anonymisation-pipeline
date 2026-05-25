@@ -50,7 +50,7 @@ from pipeline.tracking.tracker import MultiTracker
     help="Face detection confidence threshold [0–1]."
 )
 @click.option(
-    "--logo-confidence", "logo_confidence", default=0.05, show_default=True,
+    "--logo-confidence", "logo_confidence", default=0.01, show_default=True,
     help="Logo detection confidence threshold [0–1]. Lower = more recall."
 )
 @click.option(

@@ -48,11 +48,12 @@ class PipelineConfig:
     face_confidence: float = 0.45
     # Text: 0.5 — DBNet is generally well-calibrated; lower if missing watermarks.
     text_confidence: float = 0.50
-    # Logo: 0.05 — YOLO-World scores logos very low with generic text prompts
-    # (diagnostic showed conf≈0.04 on a visible broadcast logo at conf=0.01 floor).
-    # Must be below 0.05 to catch real detections; 0.30 filters everything out.
-    # Accept higher FPR in exchange for recall — privacy pipeline favours over-detection.
-    logo_confidence: float = 0.05
+    # Logo: 0.01 — YOLO-World scores logos extremely low with generic prompts.
+    # Abstract graphic logos (car badges, geometric emblems) score 0.01–0.04;
+    # text-based logos score up to ~0.13. Threshold of 0.05 misses most graphic logos.
+    # 0.01 catches real detections while staying above pure noise (conf < 0.005).
+    # High FPR accepted: privacy pipeline favours over-detection over under-detection.
+    logo_confidence: float = 0.01
 
     # ── Tracking ──────────────────────────────────────────────────────────────
     # Delete a track if it hasn't been matched in this many frames.
@@ -96,12 +97,15 @@ class PipelineConfig:
     # YOLO-World matches each prompt independently and takes the union.
     logo_prompts: list[str] = field(default_factory=lambda: [
         "logo",
-        "brand mark",
+        "brand logo",
         "company logo",
+        "car logo",
+        "car badge",
+        "vehicle emblem",
+        "brand emblem",
         "trademark",
         "watermark",
-        "product logo",
-        "brand name",
+        "brand mark",
     ])
 
     # ── Paths ─────────────────────────────────────────────────────────────────
