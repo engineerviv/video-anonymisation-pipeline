@@ -208,22 +208,57 @@ A single-frame gap in redaction (frame N has no box while N-1 and N+1 do) is a p
 
 ---
 
-## 8. Known Limitations and Failure Modes
+## 8. Performance Against Assignment Requirements
 
-| Failure Mode | Impact | Mitigation |
-|---|---|---|
-| Fast scene cuts mid-track | Stale box propagated to wrong content | Scene cut detection + tracker reset |
-| Small faces (<20×20px) | Detection recall drops significantly | Confidence threshold tuning, RetinaFace upgrade path |
-| Dark skin tones | YOLOv8-face has known recall disparity on darker skin in low light | Document in model card; evaluate across demographics |
-| Semi-transparent watermarks | PaddleOCR DBNet misses low-contrast text | CRAFT as alternative detector |
-| Abstract logos without text context | YOLO-World semantic query fails on non-textual shapes | Accept as known limitation; document in model card |
-| Heavy H.264 compression | Reduces edge contrast, hurts text/logo detection | Not mitigated — accept performance degradation on heavily compressed video |
-| VFR (variable frame rate) video | Scene cut threshold and K-frame counting may be wrong | Normalize to CFR in extractor |
-| Long videos (>3 min) — FFmpeg stderr pipe deadlock | Pipeline freezes mid-video; progress bar stops | Background thread drains FFmpeg stderr continuously — see reconstruction.py |
+Honest gap analysis. All metrics are from the proxy ground-truth evaluation (`evaluate.py` + `auto_annotate.py`). The evaluation methodology has a fundamental flaw explained below that makes every number here an approximation, not a ground truth.
+
+| Metric | Required | Measured | Gap | Notes |
+|---|---|---|---|---|
+| Face Recall | ≥ 95% | **63.4%** | −31.6 pp | Below pass threshold. See caveat below. |
+| Face Precision | ≥ 90% | 99.2% | +9.2 pp | ✓ |
+| Text Recall | ≥ 90% | **0%** | −90 pp | Stale annotations — see caveat below. |
+| Logo Recall | ≥ 90% | **0%** | −90 pp | Stale annotations — see caveat below. |
+| Re-ID Rate | ≤ 2% | 0% | −2 pp | ✓ Gaussian blur σ=20 is effective. |
+| Temporal Consistency | ≥ 98% | **94.1%** | −3.9 pp | Below threshold. ByteTrack helps but logo/text tracks flicker. |
+| FPS (T4) | ≥ 10 | 10.3 | +0.3 | ✓ Barely. Text is the bottleneck at 181ms/det-frame. |
+| SSIM | ≥ 0.85 | 0.999 | +0.149 | ✓ Redaction is spatially confined; non-redacted regions are pristine. |
+| FPR | ≤ 5% | 0% | −5 pp | ✓ |
+
+**Grading tier on paper: Fail.** Face recall and text/logo recall are below the fail threshold.
+
+### Why the numbers are not reliable
+
+**Circular (proxy) ground truth.** `auto_annotate.py` runs the same YOLOv8n-face, PaddleOCR, and YOLO-World models at lower confidence thresholds to generate ground-truth annotations. Evaluation then measures how well the pipeline agrees with itself, not how well it detects real faces/text/logos. A face our detector scores at 0.40 (below pipeline threshold 0.45) counts as a missed detection in the benchmark but may not be a real face.
+
+**Stale text and logo annotations.** The annotation files in `data/annotations/` were generated before the logo confidence threshold was fixed (0.30→0.01) and before ByteTrack was bypassed for logos. At the time of annotation, logo and text detection were largely broken. Evaluating a fixed pipeline against broken-era annotations produces 0% recall — the pipeline now finds objects the annotation step didn't capture. The 0% text/logo recall is an artifact of annotation staleness, not a pipeline failure.
+
+**What the benchmark does capture reliably:** SSIM (no model involved), re-ID rate (ArcFace on redacted vs original), throughput (wall-clock timing), and directional signal on face recall.
 
 ---
 
-## 9. FFmpeg Stderr Pipe Deadlock — Engineering Note
+## 9. Known Limitations and Failure Modes
+
+| Failure Mode | Impact | Mitigation |
+|---|---|---|
+| Face recall below 95% requirement | Misses ~1 in 3 faces in the proxy benchmark | Upgrade to YOLOv8s-face; lower `face_confidence` from 0.45→0.35 at FP cost |
+| Text detection is overlay-only by design | Mid-frame text (whiteboards, street signs, books, product labels) is not redacted | Deliberate scope limit to reduce FP; remove `_is_overlay_position` filter to widen scope at precision cost |
+| Logo detection low confidence (0.01) | Very high FP risk — any vaguely circular or badge-shaped region may trigger | Accepted trade-off: YOLO-World scores genuine logos at 0.01–0.13; threshold cannot be raised without missing most logos |
+| Logo tracking bypasses ByteTrack | Logo boxes flicker frame-to-frame with no Kalman smoothing | ByteTrack's hidden confidence floor (det_thresh + 0.1 = 0.15) silently discards all YOLO-World logo detections; bypass was necessary but removes temporal continuity |
+| Temporal consistency 94.1% vs ≥98% required | 1 in 17 active-track frames has no redaction box | Primarily caused by logo/text flickering; increasing EMA α or track max_age would help |
+| PaddleOCR timeout fix is broken | 8-second OCR hang guard does not work: `ThreadPoolExecutor.__exit__` calls `shutdown(wait=True)`, blocking even after `future.result(timeout=8)` raises `TimeoutError` | Real fix requires running OCR in a subprocess, not a thread. Not implemented. |
+| FPS on M1 can drop below 10 | M1 measured 6–17 FPS, resolution-dependent. Complex 1080p content can fall below the ≥10 FPS requirement | Requirement met on T4 (10.3 FPS). M1 is below spec for heavy content. |
+| Fast scene cuts mid-track | Stale box propagated to wrong content for up to K frames | Scene cut detection + tracker reset |
+| Small faces (<20×20px) | Detection recall drops significantly | Confidence threshold tuning, RetinaFace upgrade path |
+| Dark skin tones | YOLOv8-face has known recall disparity on darker skin in low light | Documented in model card |
+| Semi-transparent watermarks | PaddleOCR DBNet misses low-contrast text | CRAFT as alternative detector |
+| Abstract logos without text context | YOLO-World semantic query fails on purely geometric shapes | Accept as known limitation; document in model card |
+| Heavy H.264 compression | Reduces edge contrast, hurts text/logo detection | Not mitigated |
+| VFR (variable frame rate) video | Scene cut threshold and K-frame counting may be wrong | Normalize to CFR in extractor |
+| Long videos (>3 min) — FFmpeg stderr pipe deadlock | Pipeline freezes mid-video | Background drain thread in `reconstruction.py` — fixed |
+
+---
+
+## 10. FFmpeg Stderr Pipe Deadlock — Engineering Note
 
 When using `subprocess.Popen` with `stderr=subprocess.PIPE`, the child process's stderr output accumulates in an OS-level pipe buffer (64KB on Linux). If the buffer fills and nobody is reading it, the child process blocks on its next stderr write. For FFmpeg encoding raw video frames:
 
@@ -238,7 +273,7 @@ Python's `subprocess` documentation explicitly warns about this: "Use `communica
 
 ---
 
-## 10. Dependency Version Constraints
+## 11. Dependency Version Constraints
 
 Two hard version pins exist that future maintainers must not remove without testing:
 
